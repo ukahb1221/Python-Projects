@@ -1,0 +1,89 @@
+#Brian Ukah
+#The purpose of this project was to create a simple login system 
+#that stores usernames and passwords into a txt file and 
+
+#Create a dictionary to store usernames and passwords
+def create_dict():
+    with open('User.txt', 'r+') as open_User:
+        with open('Pass.txt', 'r+') as open_Pass:
+            user_list = [line.rstrip('\n') for line in open('User.txt')]
+            pass_list = [line.rstrip('\n') for line in open('Pass.txt')]
+            global user_dict
+            user_dict = {}
+            for num1, username in enumerate(user_list):
+                for num2, password in enumerate(pass_list):
+                    if num1 == num2:
+                        user_dict[username] = password
+#If the user does not have an account create one
+def create_account():
+    name_exsit = True
+
+    while name_exsit == True:
+        exsits = False
+        username = str(input('Username: '))
+
+        for name in user_dict:
+            if name.lower() == username.lower():
+                exsits = True
+                print('Sorry username already exsits.')
+        if exsits == False:
+            name_exsit = False
+
+    #Check to see if the created password matches
+    pass_match = False
+
+    while pass_match == False:
+        password = str(input('Password: '))
+        check_password = str(input('Confirm Password: '))
+        
+        if password != check_password:
+            print('Passwords do not match!')
+        else:
+            pass_match = True
+            print('Password Confirmed')
+
+    #Add newly created username and password to the list
+    with open('User.txt', 'a+') as write_User:
+        with open('Pass.txt', 'a+') as write_Pass:
+            write_User.write('\n' + username)
+            write_Pass.write('\n' + password)
+    return False
+
+#If the user already had a username and password, login
+def login():
+    logged = False
+
+    while logged == False:
+        print('Login\n')
+
+        username = str(input('Enter your username: '))
+        password = str(input('Enter your password: '))
+
+        #Check the dictionary to see if username and passwords match
+        for name, pas in user_dict.items():
+            if username == name and password == pas:
+                print('Sucessfuly logged in.')
+                return True
+            else:
+                print('Username or password does not match.')
+
+def main():
+    login_success = False
+    while login_success == False:
+        create_dict()
+
+        #Print out login menu
+        print('Login Menu')
+        print('1. Create an Account')
+        print('2. Login into Account')
+
+        user_choice = input('Please select an option. ')
+        if user_choice == '1':
+            login_success = create_account()
+        elif user_choice == '2':
+            login_success = login()
+        else:
+            print('Please choose a valid option\n')
+
+#Call back main
+main()
