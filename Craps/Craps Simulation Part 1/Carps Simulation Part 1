@@ -1,1 +1,49 @@
-Testing
+#Craps Simulation Part 1
+
+import random
+# Roll method stores each roll for the Craps game
+def dice_roll():
+    roll_the_dice = input('Press <Enter> to roll the dice.')
+    print()
+    roll = random.randrange(6) + 1 + random.randrange(6) + 1
+    print('You rolled a ', roll)
+    return roll
+
+def main():
+    response = input('Do you want to play Craps? (y/n): ')
+    if response == 'y' or response == 'Y':
+        print('Craps Simulation')
+        print()
+    
+    while response == 'y' or response == 'Y':
+       first_roll = dice_roll()
+       
+       #If the user rolls a 7 or an 11 on their first roll,
+       #then they win
+       if first_roll == 7 or first_roll == 11:
+           print('You Won!')
+           response = input('Do you want to play again? (y/n): ')
+        #If the user rolls a 2, 3, or 12 on their first roll,
+        #thenthey lose
+       elif first_roll == 2 or first_roll == 3 or first_roll == 12:
+           print('You Lost!')
+           response = input('Do you want to play again? (y/n): ')
+        #If any other number is rolled store it in point 
+       else:
+           print("We're going try to roll the point. ")
+           point = first_roll
+           new_roll = dice_roll()
+
+           #Keep rolling until the user rolls their point value,
+           #or rolls a 7
+           while new_roll != point and new_roll != 7:
+               new_roll = dice_roll()
+           if new_roll == point:
+               print('You win!')
+               response = input('Do you want to play again? (y/n): ')
+           else:
+               print('You lose!')
+               response = input('Do you want to play again? (y/n): ')
+           
+#Call back main
+main()
