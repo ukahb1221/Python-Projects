@@ -1,6 +1,8 @@
 #Brian Ukah
-#The purpose of this project was to create a simple login system 
-#that stores usernames and passwords into a txt file and 
+#The purpose of this project is to create a simple login system 
+#that stores usernames and passwords into a txt file then prompts
+#the user to login. 
+ 
 
 #Create a dictionary to store usernames and passwords
 def create_dict():
