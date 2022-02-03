@@ -1,0 +1,50 @@
+import random
+
+#Create a user and a computer variable 
+user_wins = 0
+
+computer_wins = 0
+
+#Create a list to hold all game options
+options = ["rock", "paper", "scissors"]
+
+while True:
+    user_input = input("Type Rock/Paper/Scissors, type 'q' to quit: ").lower()
+    if user_input == 'q':
+        break
+    
+    if user_input not in options:
+        continue
+
+    #Generate numbers to for the options list
+    random_numbers = random.randint(0,2)
+
+    #Have to computer pick a random int
+    computer_pick = options[random_numbers]
+
+    print(f"Computer picked {computer_pick}.")
+
+    #Add all user wins to user_wins
+    if user_input == "rock" and computer_pick == "scissors":
+        print("You won!")
+        user_wins += 1
+
+    elif user_input == "paper" and computer_pick == "rock":
+        print("You won!")
+        user_wins += 1
+
+    elif user_input == "scissors" and computer_pick == "paper":
+        print("You won!")
+        user_wins += 1
+
+    elif user_input == computer_pick:
+        print("There is a tie.")
+
+    #Computer wins case
+    else:
+        print("Sorry you lost.")
+        computer_wins += 1
+
+print(f"You won {user_wins} times.")
+print(f"The computer won {computer_wins} times.")
+print("Goodbye!")
