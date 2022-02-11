@@ -1,3 +1,5 @@
+#Note this code is over-commented on purpose as a way to poperly documnet and learn
+#the python syntax
 import random
 
 #Create a user and a computer variable 
