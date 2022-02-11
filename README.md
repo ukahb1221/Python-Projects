@@ -8,3 +8,8 @@ ________________________________________________________________________________
 Login System
 
 The project mimics a basic login system of a website. By storing the username and passwords in a txt file the program asks the user if they have a username or password. If they do not have a username and password they will be prompted to create one. If the do have a username and password they will be prompted to login.
+
+Rock, Paper, Scissors
+___________________________________________________________________________________________________________________________________________________________________________________
+This program follows the simple rules of rock, paper, scissors. The user will type either of those 3 choices to the computer and the program will print if the user won, if there was a tie, or if the user lost. The program then stores each win a loss and print the results. A simple program I created to practice loops in Python.
+*Notice that this code is over-commented, however, this was done on purpose as a way to 
