@@ -1,0 +1,9 @@
+import pandas_datareader as pdr
+import datetime as dt
+
+stock_name = input("Enter a Stock ticker: ")
+
+start = dt.datetime(2020, 1, 1)
+ticker = pdr.get_data_yahoo(stock_name, start)
+ticker['MA'] = ticker['Close'].rolling(50).mean()
+print(ticker[50:].head())
